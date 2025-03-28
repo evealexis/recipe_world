@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %}{% endblock %}
+
+{% block body %}
+    {% for recipe in recipes %}
+    <div class="grid col-1">
+    {{ recipe.name }} <br>
+    {{ recipe.ingredients }} <br>
+    {{ recipe.instructions }}
+    <hr>
+    </div>
+    {% endfor %}
+
+{% endblock %}
