@@ -6,6 +6,8 @@ name = "pypi"
 [packages]
 django-allauth = "*"
 python-decouple = "*"
+sorl-thumbnail = "*"
+pillow = "*"
 
 [dev-packages]
 

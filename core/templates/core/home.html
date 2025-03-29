@@ -1,15 +1,28 @@
 {% extends "base.html" %}
 
+{% load thumbnail %}
+
 {% block title %}{% endblock %}
 
 {% block body %}
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-8">
     {% for recipe in recipes %}
-    <div class="grid col-1">
-    {{ recipe.name }} <br>
-    {{ recipe.ingredients }} <br>
-    {{ recipe.instructions }}
-    <hr>
-    </div>
-    {% endfor %}
+    <div class="card bg-base-100 w-full shadow-sm">
+      <figure figure class="px-10 pt-10">
+          {% thumbnail recipe.image "300x250" crop="center" as im %}
+          <a href="{% url 'core:detail' recipe.id %}">
+          <img class="rounded" src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}" style="object-fit: cover">
+        </a>
+      {% endthumbnail %}
+        </figure>
+        <div class="card-body items-center text-center">
+          <h2 class="card-title">
+            {{ recipe.name }}
+          </h2>
+        </div>
+      </div>
 
+
+    {% endfor %}
+    </div>
 {% endblock %}

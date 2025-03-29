@@ -1,7 +1,7 @@
 # Recipe World
+Coming soon!
 
 ## Technologies Used:
-
 - Django
-- TailwindCSS
+- TailwindCSS + DaisyUI
 - SQL

@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% load thumbnail %}
+
+{% block title %}{{ recipe.name }}{% endblock %}
+
+{% block body %}
+{% thumbnail recipe.image "450x450" as im %}
+<img class="rounded" src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}">
+{% endthumbnail %}
+    <strong class="text-4xl">{{ recipe.name }}</strong>
+    <p>{{ recipe.ingredients }}</p>
+    <p>{{ recipe.instructions }}</p>
+    <p>Posted by: {{ recipe.author.username }}</p>
+{% endblock %}

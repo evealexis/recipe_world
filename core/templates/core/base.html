@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="garden">
+<html lang="en" data-theme="dim">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,60 +9,50 @@
     <link href="https://cdn.jsdelivr.net/npm/daisyui@5/themes.css" rel="stylesheet" type="text/css" />
 
 </head>
-<body>
+<body class="bg-base-200">
     <div class="navbar bg-base-100 shadow-sm">
         <div class="navbar-start">
-          <div class="dropdown">
-            <div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16" /> </svg>
-            </div>
-          </div>
           <a class="btn btn-ghost text-xl" href="/">Recipe World</a>
         </div>
         <div class="navbar-end">
+            <span class="pl-4">
+            <a class="btn" href="" >Dashboard</a>
+            <span class="pl-4">
             {% if request.user.is_authenticated %}
+
+            <a class="btn" href="{% url 'core:new_recipe' %}">Add new recipe</a>
+
             <a class="btn" href="{% url 'account_logout' %}">Logout</a>
         {% else %}
             <a class="btn" href="{% url 'account_login' %}">Login</a>
         {% endif %}
         </div>
       </div>
-    <div class="flex-col p-8">
-
-
-        <hr>
+    <main class="flex flex-col items-center justify-center text-center p-4 w-full ">
 
     {% block body %}
-    {% block content %}{% endblock %}
-    {% endblock %}
+    {% block content %}
+  
+    {% endblock content %}
+    {% endblock body %}
 
-    </div>
+    </main>
 
     <footer class="footer sm:footer-horizontal bg-base-300 text-base-content p-10">
         <aside>
             <strong>Recipe World</strong>
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit dolores molestiae quia minus vitae! 
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit dolores molestiae vitae! 
             <br>
-            Voluptas inventore officia doloremque perferendis illo impedit nihil reprehenderit animi mollitia 
+            Voluptas inventore officia doloremque perferendis illo impedit nihil mollitia 
             <br>
             dolorem est, aut saepe debitis.
             <br />
           </p>
         </aside>
         <nav>
-          <h6 class="footer-title">Services</h6>
-          <a class="link link-hover">Branding</a>
-          <a class="link link-hover">Design</a>
-          <a class="link link-hover">Marketing</a>
-          <a class="link link-hover">Advertisement</a>
-        </nav>
-        <nav>
           <h6 class="footer-title">Company</h6>
           <a class="link link-hover">About us</a>
-          <a class="link link-hover">Contact</a>
-          <a class="link link-hover">Jobs</a>
-          <a class="link link-hover">Press kit</a>
         </nav>
         <nav>
           <h6 class="footer-title">Legal</h6>
