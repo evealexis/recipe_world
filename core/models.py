@@ -7,7 +7,7 @@ class Recipe(models.Model):
     name = models.CharField(max_length=240)
     ingredients = models.CharField(max_length=400)
     instructions = models.CharField(max_length=400)
-    image = ImageField()
+    image = models.ImageField(upload_to="media/")
     author = models.ForeignKey(
         User,
         on_delete=models.CASCADE,

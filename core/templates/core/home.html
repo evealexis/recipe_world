@@ -9,7 +9,7 @@
     {% for recipe in recipes %}
     <div class="card bg-base-100 w-full shadow-sm">
       <figure figure class="px-10 pt-10">
-          {% thumbnail recipe.image "300x250" crop="center" as im %}
+          {% thumbnail recipe.image "350x250" crop="center" as im %}
           <a href="{% url 'core:detail' recipe.id %}">
           <img class="rounded" src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}" style="object-fit: cover">
         </a>

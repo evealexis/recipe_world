@@ -1,6 +1,7 @@
 from django.views.generic import ListView, DetailView
 from django.views.generic.edit import CreateView
 from .models import Recipe
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 class HomePage(ListView):
     http_method_names = ["get"]
@@ -17,7 +18,18 @@ class RecipeDetailView(DetailView):
     context_object_name = "recipe"
 
 
-class CreateNewRecipe(CreateView):
+class CreateNewRecipe(LoginRequiredMixin, CreateView):
     model = Recipe
     template_name = "core/create.html"
-    fields = ['name', 'ingredients', 'instructions']
+    fields = ['name', 'ingredients', 'instructions', 'image']
+    success_url = "/"
+
+    def dispatch(self, request, *args, **kwargs):
+        self.request = request
+        return super().dispatch(request, *args, **kwargs)
+
+    def form_valid(self, form):
+        obj = form.save(commit=False)
+        obj.author = self.request.user
+        obj.save()
+        return super().form_valid(form)
