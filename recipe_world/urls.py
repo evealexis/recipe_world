@@ -21,11 +21,13 @@ from django.urls import path, re_path as url
 from django.conf.urls import include
 from django.conf.urls.static import static
 from core import urls as core_urls
+from dashboard import urls as dashboard_urls
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path("", include(core_urls, namespace="core")),
+    path("dashboard/", include(dashboard_urls, namespace="dashboard")),
     url("", include("allauth.urls")),
 ]
 

@@ -2,15 +2,15 @@
 
 {% load thumbnail %}
 
-{% block title %}{% endblock %}
+{% block title %}{{ recipe.author.username }}{% endblock %}
 
 {% block body %}
 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-8">
     {% for recipe in recipes %}
     <div class="card bg-base-100 w-full shadow-sm">
       <figure figure class="px-10 pt-10">
-        <a href="{% url 'core:detail' recipe.id %}">
           {% thumbnail recipe.image "350x250" crop="center" as im %}
+          <a href="{% url 'core:detail' recipe.id %}">
           <img class="rounded" src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}" style="object-fit: cover">
         </a>
       {% endthumbnail %}
